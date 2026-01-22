@@ -3,17 +3,17 @@
 ============================================================
 
 Final Metrics:
-  • Training Accuracy: 92.35%
-  • Validation Accuracy: 68.00%
-  • Accuracy Gap: 24.35%
+  • Training Accuracy: 88.78%
+  • Validation Accuracy: 72.00%
+  • Accuracy Gap: 16.78%
 
 Interpretation:
-The plots show that training accuracy increases to 92.3% while 
-validation accuracy stagnates at 68.0%, indicating overfitting 
+The plots show that training accuracy increases to 88.8% while 
+validation accuracy stagnates at 72.0%, indicating overfitting 
 due to limited dataset size. This is expected behavior for small academic 
 datasets and demonstrates understanding of model limitations.
 
-The gap of 24.3% between training and validation accuracy is acceptable 
+The gap of 16.8% between training and validation accuracy is acceptable 
 for a dataset of this size. The model has learned meaningful patterns while 
 showing some overfitting, which is typical in academic projects with 
 constrained data.
@@ -24,17 +24,17 @@ constrained data.
 ============================================================
 
 Final Metrics:
-  • Training Accuracy: 81.27%
-  • Validation Accuracy: 78.57%
-  • Accuracy Gap: 2.70%
+  • Training Accuracy: 84.20%
+  • Validation Accuracy: 77.92%
+  • Accuracy Gap: 6.28%
 
 Interpretation:
-The plots show that training accuracy increases to 81.3% while 
-validation accuracy stagnates at 78.6%, indicating overfitting 
+The plots show that training accuracy increases to 84.2% while 
+validation accuracy stagnates at 77.9%, indicating overfitting 
 due to limited dataset size. This is expected behavior for small academic 
 datasets and demonstrates understanding of model limitations.
 
-The gap of 2.7% between training and validation accuracy is acceptable 
+The gap of 6.3% between training and validation accuracy is acceptable 
 for a dataset of this size. The model has learned meaningful patterns while 
 showing some overfitting, which is typical in academic projects with 
 constrained data.

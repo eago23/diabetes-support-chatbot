@@ -17,6 +17,23 @@ GENERAL_INFO_RESPONSES = [
     "There are two main types: Type 1 (autoimmune) and Type 2 (lifestyle-related).",
 ]
 
+ACTION_TO_STEPS = {
+    "avoid_sugar": [
+        "Avoid sugary drinks and sweets today (soda, juice, desserts).",
+        "Choose low-glycemic carbs (whole grains, legumes) and add fiber (vegetables).",
+        "Drink water and avoid snacking on processed foods."
+    ],
+    "walk_30_minutes": [
+        "Walk 10–15 minutes after meals (or 30 minutes total today).",
+        "Start at a comfortable pace; stop if you feel dizzy.",
+        "Stay hydrated."
+    ],
+    "eat_healthy_meal": [
+        "Eat a balanced meal: lean protein + vegetables + a small portion of whole grains.",
+        "Avoid skipping meals to keep glucose stable."
+    ],
+}
+
 
 # ==================== RESPONSE GENERATOR ====================
 
@@ -77,11 +94,31 @@ def _get_risk_prefix(risk):
 
 
 def _handle_reduce_glucose(risk_prefix, plan):
-    """Handle glucose reduction intent."""
-    if plan:
-        return f"{risk_prefix}To reduce your glucose level, follow this plan: {', '.join(plan)}"
-    else:
-        return f"{risk_prefix}Your glucose is already at a healthy level. Keep up the good work!"
+    """Handle glucose reduction intent with human-readable steps."""
+    if not plan:
+        return f"{risk_prefix}Your glucose looks stable. Keep your healthy habits!"
+
+    # Convert action codes (e.g., avoid_sugar) into real advice steps
+    steps = []
+    for action in plan:
+        steps.extend(ACTION_TO_STEPS.get(action, [f"Follow: {action.replace('_', ' ')}"]))
+
+    # Remove duplicate steps while keeping order
+    seen = set()
+    steps_unique = []
+    for s in steps:
+        if s not in seen:
+            steps_unique.append(s)
+            seen.add(s)
+
+    formatted_steps = "\n".join([f"• {s}" for s in steps_unique])
+
+    return (
+        f"{risk_prefix}Here’s a practical plan to help reduce glucose today:\n\n"
+        f"{formatted_steps}\n\n"
+        "If you feel unwell or your readings stay very high, consult a clinician."
+    )
+
 
 
 def _handle_diet_advice(risk_prefix, risk):
